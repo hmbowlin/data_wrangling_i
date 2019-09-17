@@ -1,6 +1,6 @@
 ---
 title: "data_wrangling_i"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -33,7 +33,7 @@ litters_data
 ```
 
 ```{r}
-## learning check to import in new dataset
+## learning check to import in new dataset (pups data)
 
 pups_data = read_csv(file = "./data_import_examples/FAS_pups.csv")
 
