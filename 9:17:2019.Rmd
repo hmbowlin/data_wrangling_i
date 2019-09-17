@@ -101,4 +101,14 @@ mlbll_data = read_excel(
 
 ```
 
+# Read in SAS file
+
+```{r}
+
+#use haven package to pull in SAS file
+pulse_data = haven::read_sas("./data_import_examples/public_pulse_data.sas7bdat")
+pulse_data
+
+
+```
 
