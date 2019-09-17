@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-## Load a data set
+# Load a data set
 
 ```{r}
 ## reads in a dataset
@@ -30,8 +30,11 @@ view(litters_data)
 ##redoing names of variables in data to clean them
 litters_data = janitor::clean_names(litters_data)
 litters_data
+
+## use :: to only use one function from a package so you don't have to download the whole thing
 ```
 
+## Learning Check 1
 ```{r}
 ## learning check to import in new dataset (pups data)
 
