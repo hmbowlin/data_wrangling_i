@@ -25,12 +25,13 @@ pups_data = janitor::clean_names(pups_data)
 litters_data
 pups_data
 ```
+
 ```{r}
 pull(litters_data, group)
 ## Group is in data set, but r doesn't know about it directly
 ```
 
-##Selecting
+**Selecting columns**
 ```{r}
 view(litters_data)
 
@@ -51,10 +52,38 @@ select(litters_data, -group)
 
 ## Using a semi-colon tells it to include every column in between the two around it
 select(litters_data, litter_number, gd0_weight:pups_born_alive)
+
+##Selecting column and renaming them (new name = old name)
+select(litters_data, GROUP = group, litter_number)
+
+##Rename function only renames function, select renames and pulls the columns you want
+rename(litters_data, GROUP = group)
+
+##other helper functions
+##starts_with()
+##ends_with()
+##contains()
 ```
 
-##
+**Filtering**
 ```{r}
+##Focusing on some values but not all values, filter for con7 group, double ='s to ask a logical question (different from = which is renaming or redoing things absolute)
+filter(litters_data, group == "Con7")
 
+##Can do with character and numeric variables (when gd = 20)
+filter(litters_data, gd_of_birth ==20)
+
+## Showing gestional date of birth less than 20 (pups born before day 20)
+filter(litters_data, gd_of_birth < 20)
+
+filter(litters_data, pups_born_alive < 6)
+
+#Can filter for multiple things at once (when group is Con7 and for pups born alive)
+filter(litters_data, pups_born_alive, group == "Con7")
+
+##Logical operations on slidse != is not equal to, ==,>=, etc
+
+## Anytime group is either Con7 or Con8, looking for overlap between the two
+filter(litters_data, group %in% c("Con7", "Con8"))
 ```
 
