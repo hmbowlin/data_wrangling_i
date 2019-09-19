@@ -1,0 +1,60 @@
+---
+title: "9:19:2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(tidyverse)
+```
+
+* dplyr added with this, filter function, stats package also has filter function (overwritten by dplyr)
+
+## Import datasets and clean up names of columns with janitor function
+```{r}
+"./datascience1/FAS_litters.csv"
+ ## [1] "./datascience1/FAS_litters.csv"
+
+litters_data =  read_csv(file = "./data_import_examples/FAS_litters.csv")
+litters_data = janitor::clean_names(litters_data)
+
+pups_data = read_csv(file = "./data_import_examples/FAS_pups.csv")
+pups_data = janitor::clean_names(pups_data)
+litters_data
+pups_data
+```
+```{r}
+pull(litters_data, group)
+## Group is in data set, but r doesn't know about it directly
+```
+
+##Selecting
+```{r}
+view(litters_data)
+
+##Selected group and litter_number variable
+select(litters_data, group, litter_number)
+
+#Selecting all of these things, and any column that starts with "pups" (helper function)
+select(litters_data, litter_number, gd0_weight, starts_with("pups"))
+
+#way you select matters, the columns show up in the direct order you call them
+select(litters_data, litter_number, group, gd0_weight)
+
+## Putting everything() calls the columns you ordered first and then everything after that
+select(litters_data, litter_number, group, everything())
+
+## If you don't want something put minus sign in front of it, here it's everything - group
+select(litters_data, -group)
+
+## Using a semi-colon tells it to include every column in between the two around it
+select(litters_data, litter_number, gd0_weight:pups_born_alive)
+```
+
+##
+```{r}
+
+```
+

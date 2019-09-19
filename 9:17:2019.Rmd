@@ -109,6 +109,30 @@ mlbll_data = read_excel(
 pulse_data = haven::read_sas("./data_import_examples/public_pulse_data.sas7bdat")
 pulse_data
 
-
 ```
+
+### Use _ not . or $ for reading in files as it is a more up to date R package and runs faster as tibble not regular dataframe (trust)
+
+## Character variables
+```{r}
+litters_data
+class(pull(litters_data, Group))
+
+#this shows character levels
+```
+
+# Exporting Data
+
+```{r}
+mlbll_data_subset =
+  read_excel(
+    path= "./data_import_examples/mlb11.xlsx",
+    range = "A1:D7"
+  )
+
+write_csv(mlbll_data_subset, path= "./data_import_examples/mlb11.xlsx")
+```
+
+
+
 
